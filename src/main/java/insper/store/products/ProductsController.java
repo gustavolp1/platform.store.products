@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 
-@FeignClient(name = "store-product")
+@FeignClient(name = "store-products")
 public interface ProductsController {
     
     @PostMapping("/products")
