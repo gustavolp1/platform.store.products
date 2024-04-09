@@ -6,7 +6,6 @@ import lombok.experimental.Accessors;
 @Builder
 @Accessors(fluent = true, chain = true)
 public record ProductOut (
-    String id,
     String name,
     String description,
     String category,
@@ -17,7 +16,8 @@ public record ProductOut (
     String weight,
     String dimension,
     String material,
-    String price
+    Double price,
+    Integer quantity
 ) {
     
 }

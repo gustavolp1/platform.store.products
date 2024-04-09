@@ -1,15 +1,18 @@
 package insper.store.products;
 
+import java.util.List;
+
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 
-@FeignClient(name = "store-products")
+
+@FeignClient(name = "store-product")
 public interface ProductsController {
     
     @PostMapping("/products")
@@ -24,15 +27,15 @@ public interface ProductsController {
     );
 
     @GetMapping("/products")
-    public ResponseEntity<ProductOut> read(
-        @RequestHeader(required = true, name = "id-user") String idUser,
-        @RequestHeader(required = true, name = "role-user") String roleUser
-    );
+    public ResponseEntity<List<ProductOut>> read();
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductOut> readById(
-        @PathVariable(required = true) String id,
-        @RequestHeader(required = true, name = "id-user") String idUser,
-        @RequestHeader(required = true, name = "role-user") String roleUser
+    public ResponseEntity<ProductOut> read(
+        @PathVariable(required = true) String id
+    );
+
+    @DeleteMapping("/products/{id}")
+    public ResponseEntity<Void> delete(
+        @PathVariable(required = true) String id
     );
 }

@@ -16,7 +16,8 @@ public record ProductIn (
     String weight,
     String dimension,
     String material,
-    String price
+    Double price,
+    Integer quantity
 ) {
     
 }
